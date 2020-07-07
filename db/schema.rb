@@ -29,25 +29,16 @@ ActiveRecord::Schema.define(version: 2020_07_06_205622) do
     t.string "muscle_group"
     t.string "difficulty"
     t.text "description"
+    t.bigint "routine_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["routine_id"], name: "index_exercises_on_routine_id"
   end
 
   create_table "routines", force: :cascade do |t|
     t.string "name"
-    t.bigint "exercise_id"
     t.integer "reps"
     t.integer "sets"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["exercise_id"], name: "index_routines_on_exercise_id"
-    t.index ["user_id"], name: "index_routines_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

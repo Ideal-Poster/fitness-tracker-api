@@ -1,5 +1,6 @@
 class Api::V1::RoutinesController < ApplicationController
   def index
+    byebug
     routines = Routine.all
     render json: routines
   end
