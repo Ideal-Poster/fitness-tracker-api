@@ -28,11 +28,13 @@ ActiveRecord::Schema.define(version: 2020_07_06_205622) do
     t.string "name"
     t.string "muscle_group"
     t.string "difficulty"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "routines", force: :cascade do |t|
+    t.string "name"
     t.bigint "exercise_id"
     t.integer "reps"
     t.integer "sets"
