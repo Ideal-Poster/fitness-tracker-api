@@ -1,13 +1,7 @@
 class Api::V1::RoutinesController < ApplicationController
   def index
-    byebug
     routines = Routine.all
-    render json: routines
-  end
-
-  def user_routines
-    routines = Routine.all.select { |r| r.user_id  == session[:user_id].to_i }
-    render json: routines
+    render json: routines, include: :exercises 
   end
 
   def show
@@ -26,6 +20,11 @@ class Api::V1::RoutinesController < ApplicationController
       routine.update(routines_params)
       render json: routine
     end
+  end
+
+  def routine_exercises
+    exercises = Routine.find(params[:id]).exercises
+    render json: exercises
   end
 
   private
