@@ -30,6 +30,6 @@ class Api::V1::RoutinesController < ApplicationController
   private
 
   def routines_params
-    params.require(:routine).permit(:name, :email)
+    params.require(:routine).permit(:name)
   end
 end
