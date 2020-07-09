@@ -22,6 +22,13 @@ class Api::V1::RoutinesController < ApplicationController
     end
   end
 
+  def destroy
+    routine = Routine.find(params[:id])
+    if routine
+      routine.delete
+    end
+  end
+
   def routine_exercises
     exercises = Routine.find(params[:id]).exercises
     render json: exercises
