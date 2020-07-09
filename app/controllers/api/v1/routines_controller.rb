@@ -11,7 +11,7 @@ class Api::V1::RoutinesController < ApplicationController
 
   def create
     routine = Routine.create(routines_params)
-    render json: routine
+    render json: routine, include: :exercises
   end
 
   def update
