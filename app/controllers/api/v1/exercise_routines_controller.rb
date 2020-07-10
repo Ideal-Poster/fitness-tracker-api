@@ -1,7 +1,7 @@
 class Api::V1::ExerciseRoutinesController < ApplicationController
   def create
     exercise_routine = ExerciseRoutine.create(exercise_routine_params)
-    render json: exercise_routine
+    render json: exercise_routine, include: :exercise
   end
 
   def destroy

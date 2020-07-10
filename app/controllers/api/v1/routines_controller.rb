@@ -1,7 +1,7 @@
 class Api::V1::RoutinesController < ApplicationController
   def index
     routines = Routine.all
-    render json: routines, include: :exercises 
+    render json: routines, include: [:exercises, :exercise_routines ]
   end
 
   def show
@@ -11,7 +11,7 @@ class Api::V1::RoutinesController < ApplicationController
 
   def create
     routine = Routine.create(routines_params)
-    render json: routine, include: :exercises
+    render json: routine, include: [:exercises, :exercise_routines ]
   end
 
   def update
